@@ -26,7 +26,10 @@ searchForm.addEventListener('submit', (e) => {
     const search = searchInput.value
     console.log('Get weather for location:', search)
 
-    const weatherUrl = 'http://localhost:3000/weather?address=' + search
+    // Remove the 'http://localhost:3000/' prefix, 
+    // so that the app will also fine in local as well as Heroku environments.
+    // const weatherUrl = 'http://localhost:3000/weather?address=' + search
+    const weatherUrl = '/weather?address=' + search
 
     messageOne.textContent = 'Loading...'
     messageTwo.textContent = ''

@@ -7,6 +7,12 @@ const forecast = require('./utils/forecast')
 
 const app = express()
 
+// Heroku sets the PORT number dynamically, 
+// and makes the value accessible through the environment variable: 'PORT'.
+// Below line will get the value from the PORT env var if it's set there, 
+// else will use the default static port# 3000. This way, local build will also run without any problem.
+const port = process.env.PORT || 3000 
+
 const publicDirectoryPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
@@ -130,8 +136,8 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000')
+app.listen(port, () => {
+    console.log('Server is up on port ' + port)
 })
 
 
