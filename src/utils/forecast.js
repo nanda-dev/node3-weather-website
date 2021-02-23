@@ -1,8 +1,10 @@
 const request = require('request')
 
+const weatherStackToken = process.env.WEATHER_STACK_TOKEN || '3b6de9ecd1c278f74549b3b91b7e1afe'
+
 const forecast = (latitude, longitude, callback) => {
     const url = 'http://api.weatherstack.com/current?' +
-        'access_key=3b6de9ecd1c278f74549b3b91b7e1afe' +
+        'access_key=' + weatherStackToken +
         '&query=' + encodeURIComponent(latitude + ',' + longitude) +
         '&units=f'
 

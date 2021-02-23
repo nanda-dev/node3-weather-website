@@ -1,10 +1,12 @@
 const request = require('request')
 
+const mapBoxToken = process.env.MAP_BOX_TOKEN || 'pk.eyJ1IjoibmFuZGFnb3BhbjIwMDEiLCJhIjoiY2trenA2djdtMGc1dDJwbWxsYzFkeDZxMSJ9.pKLbR-5QDrGmn3IXBu5sSg'
+
 const geocode = (address, callback) => {
     const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' +
         //'Los%20Angeles' +
         encodeURIComponent(address) +
-        '.json?access_token=pk.eyJ1IjoibmFuZGFnb3BhbjIwMDEiLCJhIjoiY2trenA2djdtMGc1dDJwbWxsYzFkeDZxMSJ9.pKLbR-5QDrGmn3IXBu5sSg&limit=1'
+        '.json?access_token=' + mapBoxToken + '&limit=1'
 
     request({ url, json: true }, (error, {body}) => {
         if (error) {
